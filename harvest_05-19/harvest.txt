@@ -1,0 +1,138 @@
+
+19-27 May 2021 CrIS PFL Plateau 20
+----------------------------------
+
+TVAC analysis home:
+  /asl/xfs3/GRAVITE/j3cris/readonly/extracted/hourly_archives/J3
+
+Edit the following as needed:
+
+get ILS test segment start and stop times
+  cat SQLLOGS/2021/05_May/{26..27}/??00/*.cmd | grep ILS_Spectral_Cal | more
+
+browse tcr files for PFL, PFH, MN, Plateau number:
+  more SQLLOGS/2021/05_May/{26..27}/??00/*.tcr
+
+browse CCS data
+  ls TEM_Collection/CCS/Collection/2021/05_May/{25..26}
+
+notes 
+ T1 > T2, for leg labels
+ packets are 8 seconds long.
+ legs are in time order below, test steps can vary
+
+
+LW side 2 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+6405632, "2021-05-19 23:04:09",614,"Starting command sequence
+66406445,"2021-05-19 23:36:04",201,"Completed command sequence
+
+66410282,"2021-05-20 02:16:59",205,"Starting command sequence
+66410734,"2021-05-20 02:33:38",225,"Completed command sequence
+
+66411411,"2021-05-20 03:01:29",470,"Starting command sequence
+66411853,"2021-05-20 03:17:45",240,"Completed command sequence
+
+66415377,"2021-05-20 05:45:43",778,"Starting command sequence
+66415854,"2021-05-20 06:03:35",117,"Completed command sequence
+
+supporting info from tcr files
+"2021-05-19 23:01:39",J3,TVAC,Proto_Flight_Low,8195940,"Greg Wortman","SIDE 2",30,5.2.4,287,J30480,"HTBB at 345 LWIR , Gas cell empty"
+"2021-05-20 02:15:17",J3,TVAC,Proto_Flight_Low,8195940,"Greg Wortman","SIDE 2",30,5.2.4,287,J30480,"HTBB at 320 LWIR , Gas cell empty",
+"2021-05-20 02:59:30",J3,TVAC,Proto_Flight_Low,8195940,"Greg Wortman","SIDE 2",30,5.2.4,287,J30480,"HTBB at 320 LWIR , Gas cell Full"
+"2021-05-20 05:45:24",J3,TVAC,Proto_Flight_Low,8195940,"Greg Wortman","SIDE 2",30,5.2.4,287,J30480,"HTBB at 345 LWIR , Gas cell Full"
+
+do the harvest
+hh=~/cris/tvac_j3/05-19_pfl_s2_CO2
+cat Collection/2021/05_May/19/2300/20210519_23_{04..36}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/05_May/20/0200/20210520_02_{16..33}_??_???.dat >  $hh/ET2.dat
+cat Collection/2021/05_May/20/0300/20210520_03_{01..17}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/05_May/20/0500/20210520_05_{45..59}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/05_May/20/0600/20210520_06_{00..03}_??_???.dat >> $hh/FT1.dat
+
+
+LW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+66678361,"2021-05-25 22:13:52",34,"Starting command sequence
+66678905,"2021-05-25 22:30:08",822,"Completed command sequence
+
+66682234,"2021-05-26 00:21:49",133,"Starting command sequence
+66682779,"2021-05-26 00:37:59",795,"Completed command sequence
+
+66683337,"2021-05-26 00:56:11",69,"Starting command sequence
+66683910,"2021-05-26 01:13:33",922,"Completed command sequence 
+
+66687823,"2021-05-26 03:24:50",46,"Starting command sequence
+66688548,"2021-05-26 03:46:47",130,"Completed command sequence
+
+supporting info from tcr files
+"2021-05-25 21:48:14",J3,TVAC,Proto_Flight_Low,8195940,"Greg Wortman","SIDE 1",30,5.2.4,287,J30480,"LWIR Empty HTBB 345"
+"2021-05-26 00:21:02",J3,TVAC,Proto_Flight_Low,8195940,"Greg Wortman","SIDE 1",30,5.2.4,287,J30480,"LWIR Empty HTBB 320"
+"2021-05-26 00:55:30",J3,TVAC,Proto_Flight_Low,8195940,"Greg Wortman","SIDE 1",30,5.2.4,287,J30480,"LWIR Full  HTBB 320"
+"2021-05-26 03:24:22",J3,TVAC,Proto_Flight_Low,8195940,"Greg Wortman","SIDE 1",30,5.2.4,287,J30480,"LWIR Full  HTBB 345"
+
+do the harvest
+hh=~/cris/tvac_j3/05-25_pfl_s1_CO2
+cat Collection/2021/05_May/25/2200/20210525_22_{13..30}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/05_May/26/0000/20210526_00_{21..37}_??_???.dat >  $hh/ET2.dat
+cat Collection/2021/05_May/26/0000/20210526_00_{56..59}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/05_May/26/0100/20210526_01_{00..13}_??_???.dat >> $hh/FT2.dat
+cat Collection/2021/05_May/26/0300/20210526_03_{24..46}_??_???.dat >  $hh/FT1.dat
+
+
+MW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+66699321,"2021-05-26 09:47:43",702,"Starting command sequence
+66699801,"2021-05-26 10:01:57",518,"Completed command sequence
+
+66701999,"2021-05-26 11:15:46",291,"Starting command sequence 
+66702474,"2021-05-26 11:29:57",979,"Completed command sequence
+
+66705756,"2021-05-26 13:19:41",579,"Starting command sequence
+66706220,"2021-05-26 13:33:22",268,"Completed command sequence
+
+66726998,"2021-05-27 01:11:08",816,"Starting command sequence
+66727461,"2021-05-27 01:25:01",35,"Completed command sequence
+
+supporting info from tcr files
+"2021-05-26 09:24:15",J3,TVAC,Proto_Flight_Low,8195940,"Dan Bass","SIDE 1",30,5.2.3,287,J30480,"MWIR Gas cell Empty  HTBB 345"
+"2021-05-26 11:15:19",J3,TVAC,Proto_Flight_Low,8195940,"Dan Bass","SIDE 1",30,5.2.3,287,J30480,"MWIR Gas cell Full CH4 HTBB 345"
+"2021-05-26 13:11:36",J3,TVAC,Proto_Flight_Low,8195940,"Dan Bass","SIDE 1",30,5.2.3,287,J30480,"MWIR Gas cell Full CH4 HTBB 320K"
+"2021-05-27 01:10:27",J3,TVAC,Proto_Flight_Low,8195940,"Jason Myers","SIDE 1",30,5.2.3,287,J30480,"MWIR, Gas cell empty, HTBB 320K"
+
+do the harvest
+hh=~/cris/tvac_j3/05-26_pfl_s1_CH4
+cat Collection/2021/05_May/26/0900/20210526_09_{47..59}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/05_May/26/1100/20210526_11_{15..29}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/05_May/26/1300/20210526_13_{19..33}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/05_May/27/0100/20210527_01_{11..25}_??_???.dat >  $hh/ET2.dat
+
+
+SW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+66728145,"2021-05-27 01:47:17",469,"Starting command sequence
+66728635,"2021-05-27 02:01:32",295,"Completed command sequence
+
+66732013,"2021-05-27 03:55:00",337,"Starting command sequence
+66732473,"2021-05-27 04:08:45",741,"Completed command sequence
+
+66737147,"2021-05-27 06:45:31",675,"Starting command sequence
+66737667,"2021-05-27 07:01:13",3,"Completed command sequence
+
+66740753,"2021-05-27 08:44:44",162,"Starting command sequence
+66741310,"2021-05-27 09:01:43",208,"Completed command sequence
+
+supporting info from tcr files
+"2021-05-27 01:46:24",J3,TVAC,Proto_Flight_Low,8195940,"Jason Myers","SIDE 1",30,5.2.3,287,J30480,"SWIR, Gas cell empty, HTBB 320K"
+"2021-05-27 03:52:08",J3,TVAC,Proto_Flight_Low,8195940,"Jason Myers","SIDE 1",30,5.2.2,287,J30480,"SWIR, Gas Filled, HTBB 320K"
+"2021-05-27 06:45:09",J3,TVAC,Proto_Flight_Low,8195940,"Jason Myers","SIDE 1",30,5.2.2,287,J30480,"SWIR, Gas Filled, HTBB 331K"
+"2021-05-27 08:42:40",J3,TVAC,Proto_Flight_Low,8195940,"Jason Myers","SIDE 1",30,5.2.2,287,J30480,"SWIR, Gas Empty, HTBB 331K"
+
+do the harvest
+hh=~/cris/tvac_j3/05-27_pfl_s1_CO
+cat Collection/2021/05_May/27/0100/20210527_01_{47..59}_??_???.dat >  $hh/ET2.dat
+cat Collection/2021/05_May/27/0300/20210527_03_{55..59}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/05_May/27/0400/20210527_04_{00..08}_??_???.dat >> $hh/FT2.dat
+cat Collection/2021/05_May/27/0600/20210527_06_{45..59}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/05_May/27/0800/20210527_08_{44..59}_??_???.dat >  $hh/ET1.dat
+

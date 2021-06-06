@@ -1,0 +1,112 @@
+
+01-02 Jun 2021 CrIS PFH Plateau 21
+-----------------------------------
+
+TVAC analysis home:
+  /asl/xfs3/GRAVITE/j3cris/readonly/extracted/hourly_archives/J3
+
+Edit the following as needed:
+
+get ILS test segment start and stop times
+  cat SQLLOGS/2021/06_Jun/{01..02}/??00/*.cmd | grep ILS_Spectral_Cal | more
+
+browse tcr files for PFL, PFH, MN, Plateau number:
+  more SQLLOGS/2021/06_Jun/{01..02}/??00/*.tcr
+
+browse CCS data
+  ls TEM_Collection/CCS/Collection/2021/06_Jun/{01..02}
+
+notes 
+ T1 > T2, for leg labels
+ packets are 8 seconds long.
+ legs are in time order below, test steps can vary
+
+SW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+2021-06-01 09:51:58",941,"Starting command sequence
+2021-06-01 10:07:39",921,"Completed command sequence
+
+2021-06-01 11:48:23",619,"Starting command sequence
+2021-06-01 12:02:49",396,"Completed command sequence
+
+2021-06-01 13:57:58",358,"Starting command sequence
+2021-06-01 14:14:57",196,"Completed command sequence
+
+2021-06-01 19:25:41",243,"Starting command sequence
+2021-06-01 19:43:08",466,"Completed command sequence
+
+supporting info from tcr files
+"2021-06-01 11:32:16",J3,TVAC,Proto_Flight_High,8195940,"Dan Bass","SIDE 1",30,5.2.2,287,J30486,"Performing ILS SWIR Temp #1 Filled Gas Cell"
+"2021-06-01 12:33:38",J3,TVAC,Proto_Flight_High,8195940,"Dan Bass","SIDE 1",30,5.2.2,287,J30486,"Performing ILS SWIR Temp #2 Filled Gas Cell"
+"2021-06-01 19:20:42",J3,TVAC,Proto_Flight_High,8195940,"Dan Bass","SIDE 1",30,5.2.2,287,J30486,"Performing ILS SWIR Temp #2 Empty Gas Cell"
+
+do the harvest
+hh=~/cris/tvac_j3/06-01_pfh_s1_CO
+cat Collection/2021/06_Jun/01/0900/20210601_09_{51..59}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/06_Jun/01/1000/20210601_10_{00..07}_??_???.dat >> $hh/ET1.dat
+cat Collection/2021/06_Jun/01/1100/20210601_11_{48..59}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/06_Jun/01/1200/20210601_12_{00..02}_??_???.dat >> $hh/FT1.dat
+cat Collection/2021/06_Jun/01/1300/20210601_13_{57..59}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/06_Jun/01/1400/20210601_14_{00..14}_??_???.dat >> $hh/FT2.dat
+cat Collection/2021/06_Jun/01/1900/20210601_19_{25..43}_??_???.dat >  $hh/ET2.dat
+
+MW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+2021-06-01 20:02:43",386,"Starting command sequence
+2021-06-01 20:19:16",207,"Completed command sequence
+
+2021-06-01 23:11:53",831,"Starting command sequence
+2021-06-01 23:27:45",700,"Completed command sequence
+
+2021-06-02 01:09:34",62,"Starting command sequence
+2021-06-02 01:31:40",318,"Completed command sequenc
+
+2021-06-02 03:31:01",175,"Starting command sequence
+2021-06-02 03:48:12",733,"Completed command sequence
+
+2021-06-02 06:22:50",760,"Starting command sequence
+2021-06-02 06:39:12",236,"Completed command sequence
+
+supporting info from tcr files
+"2021-06-01 19:54:54",J3,TVAC,Proto_Flight_High,8195940,"Dan Bass","SIDE 1",30,5.2.3,287,J30486,"Performing ILS MWIR Temp #2 Empty Gas Cell"
+"2021-06-01 23:11:39",J3,TVAC,Proto_Flight_High,8195940,"Jason Myers","SIDE 1",30,5.2.3,287,J30486,"Performing ILS MWIR Temp #2 Filled Gas Cell"
+"2021-06-02 01:09:07",J3,TVAC,Proto_Flight_High,8195940,"Jason Myers","SIDE 1",30,5.2.3,287,J30486,"Performing ILS MWIR Temp #1 Filled Gas Cell"
+"2021-06-02 03:29:35",J3,TVAC,Proto_Flight_High,8195940,"Jason Myers","SIDE 1",30,5.2.3,287,J30486,"Performing ILS MWIR Temp #1 Filled Gas Cell"
+"2021-06-02 03:30:35",J3,TVAC,Proto_Flight_High,8195940,"Jason Myers","SIDE 1",30,5.2.3,287,J30486,"Repeat Performing ILS MWIR Temp #1 Filled Gas Cell per Step 2"
+"2021-06-02 06:21:10",J3,TVAC,Proto_Flight_High,8195940,"Jason Myers","SIDE 1",30,5.2.3,287,J30486,"Performing ILS MWIR Temp #1 Empty Gas Cell"
+
+do the harvest
+hh=~/cris/tvac_j3/06-01_pfh_s1_CH4
+cat Collection/2021/06_Jun/01/2000/20210601_20_{02..19}_??_???.dat >  $hh/ET2.dat
+cat Collection/2021/06_Jun/01/2300/20210601_23_{11..27}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/06_Jun/02/0300/20210602_03_{31..48}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/06_Jun/02/0600/20210602_06_{22..39}_??_???.dat >  $hh/ET1.dat
+
+LW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+2021-06-02 07:40:47",779,"Starting command sequence
+2021-06-02 07:55:45",598,"Completed command sequence
+
+2021-06-02 09:13:29",707,"Starting command sequence
+2021-06-02 09:31:09",718,"Completed command sequence
+
+2021-06-02 11:10:11",373,"Starting command sequence
+2021-06-02 11:27:39",970,"Completed command sequence
+
+2021-06-02 14:02:53",970,"Starting command sequence
+2021-06-02 14:18:16",407,"Completed command sequence
+
+supporting info from tcr files
+"2021-06-02 07:31:02",J3,TVAC,Proto_Flight_High,8195940,"Jason Myers","SIDE 1",30,5.2.4,287,J30486,"Performing ILS LWIR Temp #1 Empty Gas Cell"
+"2021-06-02 08:51:13",J3,TVAC,Proto_Flight_High,8195940,"Jason Myers","SIDE 1",30,5.2.4,287,J30486,"Performing ILS LWIR Temp #1 Filled Gas Cell"
+"2021-06-02 09:12:57",J3,TVAC,Proto_Flight_High,8195940,Other,"SIDE 1",30,5.2.4,287,J30486,"Performing ILS LWIR Temp #1 Filled Gas Cell"
+"2021-06-02 11:09:29",J3,TVAC,Proto_Flight_High,8195940,Other,"SIDE 1",30,5.2.4,287,J30486,"Performing ILS LWIR Temp #2 Filled Gas Cell"
+"2021-06-02 14:02:34",J3,TVAC,Proto_Flight_High,8195940,Other,"SIDE 1",30,5.2.4,287,J30486,"Performing ILS LWIR Temp #2 Empty Gas Cell HTBB 320"
+
+do the harvest
+hh=~/cris/tvac_j3/06-02_pfh_s1_CO2
+cat Collection/2021/06_Jun/02/0700/20210602_07_{40..55}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/06_Jun/02/0900/20210602_09_{13..31}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/06_Jun/02/1100/20210602_11_{10..27}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/06_Jun/02/1400/20210602_14_{02..18}_??_???.dat >  $hh/ET2.dat
+

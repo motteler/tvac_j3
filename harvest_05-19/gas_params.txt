@@ -1,0 +1,85 @@
+
+PFL gas cell parameters from CCS files
+
+Summary
+LW2  CO2 49.67 Torr, 16.6 C
+LW1  CO2 49.54 Torr, 16.8 C
+MW1  CH4 50.00 Torr, 16.9 C
+SW1  CO  44.53 Torr, 16.6 C
+
+LW CO2 side 2, 19-20 May 2021
+-------------------------------
+ET1
+  HTBB (345 + 344.4) / 2 = 344.7 K
+ET2
+  HTBB (320 + 319.37) / 2 ~ 319.7 K
+FT2
+  HTBB (320 + 319.37) / 2 ~ 319.7 K
+  gas cell pres 49.682 Torr
+  gas cell temp 16.6 C
+FT1
+  HTBB (345 + 344.4) / 2 = 344.7 K
+  gas cell pres 49.658 Torr
+  gas cell temp 16.6 C
+
+cell pres (49.682 + 49.658) / 2 = 49.67 Torr
+cell temp 16.6 C
+
+LW CO2 side 1, 25-26 May 2021
+------------------------------
+ET1
+  HTBB (345 + 344.4) / 2 = 344.7 K
+ET2
+  HTBB (320 + 319.38) / 2 ~ 319.7 K
+FT2
+  HTBB (320 + 319.38) / 2 ~ 319.7 K
+  gas cell pres 49.45 Torr
+  gas cell temp 16.8 C
+FT1
+  HTBB (345 + 344.4) / 2 = 344.7 K
+  gas cell pres 49.43 Torr
+  gas cell temp 16.8 C
+
+cell pres (49.43 + 49.658) / 2 = 49.54 Torr
+cell temp 16.8 C
+
+MW CH4 side 1, 26-27 May 2021
+------------------------------
+ET1
+  HTBB (345 + 344.4) / 2 = 344.7 K
+FT1
+  HTBB (345 + 344.4) / 2 = 344.7 K
+  gas cell pres 49.995 Torr
+  gas cell temp 16.9 C
+FT2
+  HTBB (320 + 319.39) / 2 ~ 319.7 K
+  gas cell pres 50.008 Torr
+  gas cell temp 16.9 C
+ET2
+  HTBB (320 + 319.4) / 2 = 319.7 K
+
+cell press (49.995 + 50.008) / 2 ~ 50 Torr
+cell temp 16.9 C
+
+SW CO side 1, 27 May 2021
+--------------------------
+ET2
+  HTBB (320 + 319.4) / 2 = 319.7 K
+FT2
+  HTBB (320 + 319.4) / 2 = 319.7 K
+  gas cell pres 44.454 Torr
+  gas cell temp 16,6 C
+FT1
+  HTBB (331 + 330.4) / 2 = 330.7 K
+  gas cell pres 44.451 Torr
+  gas cell temp 16,6 C
+ET1
+  HTBB (331 + 330.4) / 2 = 330.7 K
+
+cell press (44.454 + 44.451) / 2 ~ = 44.53 Torr
+cell temp 16.6 C
+
+
+
+
+

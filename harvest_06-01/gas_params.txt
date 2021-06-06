@@ -1,0 +1,4 @@
+
+SW1 CO   49.03 Torr, 18.4 C
+MW1 CH4  49.47 Torr, 18.6 C
+

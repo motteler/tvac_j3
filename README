@@ -1,0 +1,67 @@
+
+CrIS J3 May-Jun 2021 TVAC gas cell tests and analysis
+------------------------------------------------------
+
+Note that the git repo does not include the mat files from the asl
+version.  These would add around 24G, to much for github.  So you
+can't run or rerun the tests from the repo.  The github version does
+include all fig and png files for the reports.
+
+Methods
+--------
+Work for a particular test is done first in the harvest and then in
+the gas cell test directories, for example harvest_02-11 and then
+02-12_mn_s1_CO.  The main harvest steps are listed in harvest.txt,
+in each harvest directory.  Harvesting produces four CCSDS packet
+files: ET1, ET2, FT1, and FT2.dat in the gas cell test directories.
+These are translated to .mat files with source/dat2mat.m.  As a
+precaution, running the first leg (or simply the whole script) twice
+will guarantee an up-to date bit trim mask, in btrim_cache.mat.
+
+The next step is to get an overview of the gas cell test data, by
+running source/read.ccs.m.  This produces a summary plot for one day,
+and saves a summary of the ccs data, for example ccs_data_02_12.mat.
+Then edit and run plot_legs_LW, MW, and SW, using start and stop times
+saved in harvest.txt, to see gas cell details of each test leg.  The
+edited plot_legs scripts become the "offical" home for the gas cell
+measurements.
+
+spec_test1 plots count spectra as a function of frequency, and (for
+a single channel) as a function of time.  This is used to trim the
+harvesting to just the ES looks.  spec_test1 gives index limits used
+by spec_test2 and fit run.  spec_test2 plots obs and calc together,
+and fit run fits obs to calcs.
+
+Directories
+------------
+reports        - final reports
+source         - common source code
+inst_data      - instrument data, mainly from ccast
+mm-dd_*_s?_*   - tests by date, segment, side, and gas
+harvest_mm-dd  - harvest notes and scripts, by date
+
+Test Scripts
+-------------
+fit_run   - set up test params, call fit_tran, plot results
+
+fit_plots - FOV breakouts and other plots, followup to fit_run
+
+spec_test1 - quick look at gas cell count spectra with data from
+    ccast/MITreader380b/read_cris_ccsds and ccast/source routines
+    inst_params and igm2spec
+
+spec_test2 - a basic comparison of observed and calculated gas cell
+    transmittance, without any fitting, using ccast libs and kc2cris
+    from the airs_decon package
+
+Functions
+----------
+cmp_tran  - compare observed and calculated transmittances
+fit_tran  - find wlaser deltas to match obs and calc
+dat2mat   - call read_cris_ccsds on harvested data
+read_ccs  - read and tabulate selected CCS fields
+read_igm  - simple wrapper to read IGMs with the MIT reader
+fit_info  - print fit_tran residuals and weights
+fovcolors - 9 distinct colors for FOV plots
+fovnames  -  FOV names for plot legend
+

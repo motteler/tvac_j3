@@ -1,0 +1,65 @@
+
+TVAC J3 data home
+  /asl/isilon/cris/tvac_j3/extracted/hourly_archives/J3/
+
+there we see
+  2 Collection/  32 SQLLOGS/  32 TEM_Collection/
+
+get test segment start stop times
+  cat SQLLOGS/2020/08_Aug/??/??00/*.cmd | grep ILS_Spectral_Cal | more
+
+browse tcr files for PFL, PFH, PFN, Plateau number:
+  more SQLLOGS/2020/08_Aug/??/????/*.tcr
+
+browse CCS data
+  ls TEM_Collection/CCS/Collection/2020/08_Aug/
+
+there we see
+  02  03  08  09
+
+run read_ccs on these days, saves fig and data files
+
+2020-08-02 14:53:01",J3,PreEnvTVAC,Mission_Nominal,8195940,"Doug Coolman","SIDE 2",30,5.2.1,287,J30259,"ILS360K HTBB"
+
+2020-08-02 21:48:46",J3,PreEnvTVAC,Mission_Nominal,8195940,"Don Evans","SIDE 2",30,5.2.4.2.3,287,J30259,"HTBB 350 GAS CELL IS EMPTY LONG WAVE IR BAND",
+
+020-08-03 00:11:06",J3,PreEnvTVAC,Mission_Nominal,8195940,"Don Evans","SIDE 2",30,5.2.2.1.7,287,J30259,"HTBB 320 GAS CELL IS EMPTY SWIR BAND"
+
+2020-08-03 00:11:23",J3,PreEnvTVAC,Mission_Nominal,8195940,"Don Evans","SIDE 2",30,5.2.4.1.7,287,J30259,"HTBB 320 GAS CELL IS EMPTY SWIR BAND",
+
+2020-08-03 04:15:56",J3,PreEnvTVAC,Mission_Nominal,8195940,"Don Evans","SIDE 2",30,5.2.4.4.3,287,J30259,"HTBB 350 GAS CELL IS FULL LWIR BAND"
+
+LWIR from cmd files
+2020-08-02 21:50:30 872 Starting command sequence   
+2020-08-02 22:13:17 633 Completed command sequence
+2020-08-03 00:12:19 160 Starting command sequence
+2020-08-03 00:28:47 741 Completed command sequence
+2020-08-03 04:16:23 899 Starting command sequence
+2020-08-03 04:32:15 346 Completed command sequence
+
+SWIR from cmd files
+2020-08-09 01:10:35 804 Starting command sequence
+2020-08-09 01:25:17 577 Completed command sequence
+2020-08-09 03:13:38 679 Starting command sequence
+2020-08-09 03:29:20 518 Completed command sequence
+2020-08-09 03:57:40 586 Starting command sequence
+2020-08-09 04:13:21 606 Completed command sequence
+2020-08-09 06:53:45 847 Starting command sequence
+2020-08-09 07:09:24 121 Completed command sequence
+
+From Larrabee's message
+  
+8/2/2020 21:57:30.171  8/2/2020 22:08:49.408  HTBB 350 EMPTY
+8/3/2020 00:15:53.092  8/3/2020 00:27:12.340  HTBB 320 EMPTY
+8/3/2020 01:30:21.921  8/3/2020 01:41:41.415  HTBB 320 FULL
+8/3/2020 04:18:18.004  8/3/2020 04:29:37.235  HTBB 350 FULL
+
+hh=~/cris/tvac_j3
+cat Collection/2020/08_Aug/02/2100/20200802_21_{57..59}_??_???.dat >  $hh/ET1.dat
+cat Collection/2020/08_Aug/02/2200/20200802_22_{00..08}_??_???.dat >> $hh/ET1.dat
+cat Collection/2020/08_Aug/03/0000/20200803_00_{15..27}_??_???.dat >  $hh/ET2.dat
+cat Collection/2020/08_Aug/03/0100/20200803_01_{30..41}_??_???.dat >  $hh/FT2.dat
+cat Collection/2020/08_Aug/03/0400/20200803_04_{18..29}_??_???.dat >  $hh/FT1.dat
+
+packets are 8 seconds long, T1 > T2
+

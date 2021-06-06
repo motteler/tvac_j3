@@ -1,0 +1,30 @@
+
+ET2:
+t1 (hh:mm:ss) > 19:34:50 
+t2 (hh:mm:ss) > 19:37:00
+ET2 index = 20:345
+
+ET1:
+t1 (hh:mm:ss) > 9:59:08
+t2 (hh:mm:ss) > 10:01:15
+ET1 index = 554:871
+
+FT2:
+t1 (hh:mm:ss) > 14:07:06
+t2 (hh:mm:ss) > 14:09:16
+FT2 index = 20:345
+gas pres 49.02 Torr
+gas temp 18.4 C
+note: full time span includes gas pressure dropout
+t1 (hh:mm:ss) > 14:07:06
+t2 (hh:mm:ss) > 14:08:40
+FT2 index = 20:255
+this drops the dropout
+
+FT1:
+t1 (hh:mm:ss) > 11:54:50
+t2 (hh:mm:ss) > 11:57:00
+FT1 index = 20:345
+gas pres 49.03 Torr
+gas temp 18.5 C
+
