@@ -1,6 +1,6 @@
 
-01-02 Jun 2021 CrIS PFH Plateau 21
------------------------------------
+1-2, 6 Jun 2021 CrIS PFH Plateau 21
+------------------------------------
 
 TVAC analysis home:
   /asl/xfs3/GRAVITE/j3cris/readonly/extracted/hourly_archives/J3
@@ -8,7 +8,7 @@ TVAC analysis home:
 Edit the following as needed:
 
 get ILS test segment start and stop times
-  cat SQLLOGS/2021/06_Jun/{01..02}/??00/*.cmd | grep ILS_Spectral_Cal | more
+  cat SQLLOGS/2021/06_Jun/{05..06}/??00/*.cmd | grep ILS_Spectral_Cal | more
 
 browse tcr files for PFL, PFH, MN, Plateau number:
   more SQLLOGS/2021/06_Jun/{01..02}/??00/*.tcr
@@ -109,4 +109,33 @@ cat Collection/2021/06_Jun/02/0700/20210602_07_{40..55}_??_???.dat >  $hh/ET1.da
 cat Collection/2021/06_Jun/02/0900/20210602_09_{13..31}_??_???.dat >  $hh/FT1.dat
 cat Collection/2021/06_Jun/02/1100/20210602_11_{10..27}_??_???.dat >  $hh/FT2.dat
 cat Collection/2021/06_Jun/02/1400/20210602_14_{02..18}_??_???.dat >  $hh/ET2.dat
+
+LW side 2 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+2021-06-06 14:03:45",610,"Starting command sequence
+2021-06-06 14:22:44",798,"Completed command sequence
+
+2021-06-06 15:24:34",855,"Starting command sequence
+2021-06-06 15:40:34",234,"Completed command sequence
+
+2021-06-06 17:58:45",354,"Starting command sequence
+2021-06-06 18:17:04",947,"Completed command sequence
+
+2021-06-06 22:11:00",586,"Starting command sequence
+2021-06-06 22:28:43",727,"Completed command sequence
+
+supporting info from tcr files
+"2021-06-06 14:02:47",J3,TVAC,Proto_Flight_High,8195940,"Dan Bass","SIDE 2",30,5.2.1,287,J30486,"ILS Gas measurements TP 8195940 NCR step 6"
+"2021-06-06 15:23:31",J3,TVAC,Proto_Flight_High,8195940,"Dan Bass","SIDE 2",30,5.2.4,287,J30486,"ILS Gas measurements TP 8195940 NCR step 6 Gas cell filled"
+"2021-06-06 17:57:15",J3,TVAC,Proto_Flight_High,8195940,"Dan Bass","SIDE 2",30,5.2.4,287,J30486,"ILS Gas measurements TP 8195940 NCR step 6 Gas cell filled HTBB at 320K"
+"2021-06-06 22:07:43",J3,TVAC,Proto_Flight_High,8195940,"Jason Myers","SIDE 2",30,5.2.4,287,J30486,"ILS Gas measurements TP 8195940 NCR step 6 Gas cell empty HTBB at 320K"
+Probable order: ET1, FT1, FT2, ET2
+
+do the harvest
+hh=~/cris/tvac_j3/06-06_pfh_s2_CO2
+cat Collection/2021/06_Jun/06/1400/20210606_14_{03..22}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/06_Jun/06/1500/20210606_15_{24..40}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/06_Jun/06/1700/20210606_17_{58..59}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/06_Jun/06/1800/20210606_18_{00..17}_??_???.dat >> $hh/FT2.dat
+cat Collection/2021/06_Jun/06/2200/20210606_22_{11..28}_??_???.dat >  $hh/ET2.dat
 
