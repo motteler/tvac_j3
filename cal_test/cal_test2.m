@@ -14,7 +14,6 @@
 %   sdir     - sweep direction, 0 or 1
 %
 
-
 % paths and libs
 addpath /asl/packages/ccast/source
 addpath /asl/packages/ccast/motmsc/utils
@@ -76,7 +75,7 @@ grid; zoom on
 xlabel('wavenumber')
 ylabel('transmittance')
 grid on; zoom on
-saveas(gcf, 'cal_test2_all', 'fig')
+% saveas(gcf, 'cal_test2_all', 'fig')
 
 figure(2); clf
 plot(freq2, tobs2, freq2, tcal2, 'k-.');
@@ -87,5 +86,5 @@ grid; zoom on
 xlabel('wavenumber')
 ylabel('transmittance')
 grid on; zoom on
-saveas(gcf, 'cal_test2_zoom', 'fig')
+% saveas(gcf, 'cal_test2_zoom', 'fig')
 

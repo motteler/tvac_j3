@@ -1,0 +1,68 @@
+
+15, xx-xx Jun 2021 CrIS MN Plateau 22
+--------------------------------------
+
+TVAC analysis home:
+  /asl/xfs3/GRAVITE/j3cris/readonly/extracted/hourly_archives/J3
+
+Edit the following as needed:
+
+get ILS test segment start and stop times
+  cat SQLLOGS/2021/06_Jun/{15..16}/??00/*.cmd | grep ILS_Spectral_Cal | more
+
+browse tcr files for PFL, PFH, MN, Plateau number:
+  more SQLLOGS/2021/06_Jun/{15..16}/??00/*.tcr
+
+browse CCS data
+  ls TEM_Collection/CCS/Collection/2021/06_Jun/{15..16}
+
+notes 
+ T1 > T2, for leg labels
+ packets are 8 seconds long.
+ legs are in time order below, test steps can vary
+
+LW side 2 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+
+ET1 (?)
+2021-06-15 01:23:11",56,"Starting command sequence
+2021-06-15 01:42:22",834,"Completed command sequence
+
+FT1 (?)
+2021-06-15 01:59:40",715,"Starting command sequence
+2021-06-15 02:15:44",695,"Completed command sequence
+
+-------
+FT1 (?)
+2021-06-15 02:50:07",178,"Starting command sequence
+2021-06-15 03:11:31",125,"Completed command sequence
+
+FT1  (?)
+2021-06-15 03:23:29",428,"Starting command sequence
+2021-06-15 03:42:05",574,"Completed command sequence
+
+FT1 (?)
+2021-06-15 03:52:45",55,"Starting command sequence
+2021-06-15 04:11:33",384,"Completed command sequence
+
+FT2 (?)
+2021-06-15 09:48:36",135,"Starting command sequence
+2021-06-15 10:05:26",491,"Completed command sequence
+
+FT2 (?)
+2021-06-15 10:27:32",703,"Starting command sequence
+2021-06-15 10:44:56",755,"Completed command sequence
+
+ET2 (?)
+2021-06-15 14:12:39",299,"Starting command sequence
+2021-06-15 14:28:33",314,"Completed command sequence
+
+
+
+
+
+
+
+
+
+

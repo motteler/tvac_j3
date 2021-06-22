@@ -7,6 +7,8 @@
 #
 
 rsync -av $* ../tvac_j3/ \
+  --exclude .git \
+  --exclude focal_fit \
   --exclude gas_calcs \
   --exclude inst_data \
   --exclude sergio \

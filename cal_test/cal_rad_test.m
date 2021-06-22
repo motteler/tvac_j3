@@ -1,5 +1,5 @@
 %
-% cal_test1 -- basic calibrated radiances, ccast eqn (1)
+% cal_rad_test
 %
 % main test parameters
 %   band    - 'LW', 'MW', or 'SW'
@@ -16,92 +16,39 @@ addpath /asl/packages/ccast/motmsc/time
 addpath /asl/packages/ccast/davet
 addpath ../source
 
+% select a band
+band = upper(input('band (e.g., LW) > ', 's'));
+
 % select a test leg
 tleg = upper(input('test leg (e.g., FT2) > ', 's'));
 mfile = fullfile('./', tleg);
 load(mfile);
+
+% take ES subsets.  NOTE: limits here are from spec_test 1
+switch tleg
+  case 'ET2', eset = 20:345;
+  case 'ET1', eset = 554:871;
+  case 'FT2', eset = 20:255;
+  case 'FT1', eset = 20:345;
+end
+
+% choose a sweep direction
+opt1 = struct;
+opt1.sdir = 0;
 
 % get wlaser from eng and neon
 opt2 = struct;
 opt2.neonWL = 703.44765;  % Larrabee's value
 [wlaser, wtime] = metlaser(d1.packet.NeonCal, opt2);
 
-% get instrument params
-band = 'SW';
-opt1 = struct; 
-opt1.user_res = 'hires';
-opt1.inst_res = 'hires4';
-[inst, user] = inst_params(band, wlaser, opt1);
-
-% choose a sweep direction
-sdir = 0;
-
 fprintf(1, 'eng neon=%.5f assigned neon=%.5f, wlaser=%.5f\n', ... 
   d1.packet.NeonCal.NeonGasWavelength, opt2.neonWL, wlaser);
 
-% read the interferograms
-[igm_es, time_es, igm_sp, time_sp, igm_it, time_it] = ...
-   read_igm(band, mfile, sdir);
+[robs, vobs] = cal_rad(band, wlaser, d1, eset, opt1);
 
-% translate to count spectra
-spec_es = igm2spec(igm_es, inst);
-spec_sp = igm2spec(igm_sp, inst);
-spec_it = igm2spec(igm_it, inst);
+bobs = rad2bt(vobs, real(robs));
 
-% take ES subsets.  NOTE: limits here are from spec_test 1
-switch tleg
-  case 'ET2', ix = 20:345;
-  case 'ET1', ix = 554:871;
-  case 'FT2', ix = 20:255;
-  case 'FT1', ix = 20:345;
-end
-
-spec_es = spec_es(:, :, ix);
-time_es = time_es(:, ix);
-
-% get obs times in matlab format
-dnum_es = iet2dnum(time_es(5,:));
-dtime_es = datetime(dnum_es, 'ConvertFrom', 'datenum');
-
-dnum_sp = iet2dnum(time_sp(5,:));
-dtime_sp = datetime(dnum_sp, 'ConvertFrom', 'datenum');
-
-dnum_it = iet2dnum(time_it(5,:));
-dtime_it = datetime(dnum_it, 'ConvertFrom', 'datenum');
-
-% take the ES, IT, and SP means
-mean_es = mean(spec_es, 3);
-mean_sp = mean(spec_sp, 3);
-mean_it = mean(spec_it, 3);
-
-% take the basic calibration ratio
-robs = (mean_es - mean_sp) ./ (mean_it - mean_sp);
-robs = bandpass(inst.freq, robs, user.v1, user.v2, user.vr);
-
-% get the SA inverse matrix
-  sfile = '../inst_data/SAinv_j3_eng_SW';
-% sfile = '../inst_data/SAinv_default_HR4_SW';
-opt1.SW_sfile = sfile;
-Sinv = getSAinv(inst, opt1);
-
-% apply the SA invers matrix
-for i = 1 : 9
-  robs(:, i) = Sinv(:,:,i) * robs(:, i);
-end
-robs = bandpass(inst.freq, robs, user.v1, user.v2, user.vr);
-
-% get expected ICT radiance
-nsci = ztail(d1.data.sci.Temp.time);
-ict_temps = ICT_countsToK(d1.data.sci.Temp, d1.packet.TempCoeffs, nsci);
-tICT = mean([ict_temps.T_PRT1,ict_temps.T_PRT2]);
-rICT = bt2rad(inst.freq, tICT);
-
-% multiply by expected radiance
-for i = 1 : 9
-  robs(:, i) = rICT .* robs(:, i);
-end
-
-bobs = rad2bt(inst.freq, real(robs));
+return
 
 figure(1)
 set(gcf, 'DefaultAxesColorOrder', fovcolors);

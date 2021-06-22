@@ -17,8 +17,8 @@
 *.nav
 *.out
 *.vrb
+*.png
 # *.pdf
-# *.png
 # *.fig
 
 # archives and packages

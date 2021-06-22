@@ -1,5 +1,5 @@
 %
-% cal_test1 -- basic calibrated radiances, ccast eqn (1)
+% cal_test1a -- call cal_rad 
 %
 % main test parameters
 %   band    - 'LW', 'MW', or 'SW'
@@ -25,13 +25,6 @@ load(mfile);
 opt2 = struct;
 opt2.neonWL = 703.44765;  % Larrabee's value
 [wlaser, wtime] = metlaser(d1.packet.NeonCal, opt2);
-
-% get instrument params
-band = 'SW';
-opt1 = struct; 
-opt1.user_res = 'hires';
-opt1.inst_res = 'hires4';
-[inst, user] = inst_params(band, wlaser, opt1);
 
 % choose a sweep direction
 sdir = 0;
