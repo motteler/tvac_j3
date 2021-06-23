@@ -1,5 +1,5 @@
 
-15, xx-xx Jun 2021 CrIS MN Plateau 22
+15, 21-22 Jun 2021 CrIS MN Plateau 22
 --------------------------------------
 
 TVAC analysis home:
@@ -8,13 +8,13 @@ TVAC analysis home:
 Edit the following as needed:
 
 get ILS test segment start and stop times
-  cat SQLLOGS/2021/06_Jun/{15..16}/??00/*.cmd | grep ILS_Spectral_Cal | more
+  cat SQLLOGS/2021/06_Jun/{21..22}/??00/*.cmd | grep ILS_Spectral_Cal | more
 
 browse tcr files for PFL, PFH, MN, Plateau number:
-  more SQLLOGS/2021/06_Jun/{15..16}/??00/*.tcr
+  more SQLLOGS/2021/06_Jun/{21..22}/??00/*.tcr
 
 browse CCS data
-  ls TEM_Collection/CCS/Collection/2021/06_Jun/{15..16}
+  ls TEM_Collection/CCS/Collection/2021/06_Jun/{21..22}
 
 notes 
  T1 > T2, for leg labels
@@ -24,45 +24,121 @@ notes
 LW side 2 ILS_Spectral_Cal times from cmd files
 ------------------------------------------------
 
-ET1 (?)
+ET1, in log, USE
 2021-06-15 01:23:11",56,"Starting command sequence
 2021-06-15 01:42:22",834,"Completed command sequence
 
-FT1 (?)
+FT1, in log
 2021-06-15 01:59:40",715,"Starting command sequence
 2021-06-15 02:15:44",695,"Completed command sequence
 
--------
-FT1 (?)
+FT1, in log
 2021-06-15 02:50:07",178,"Starting command sequence
 2021-06-15 03:11:31",125,"Completed command sequence
 
-FT1  (?)
+FT1, in log
 2021-06-15 03:23:29",428,"Starting command sequence
 2021-06-15 03:42:05",574,"Completed command sequence
 
-FT1 (?)
+FT1, in log, USE
 2021-06-15 03:52:45",55,"Starting command sequence
 2021-06-15 04:11:33",384,"Completed command sequence
 
-FT2 (?)
+FT2 (from css), in log
 2021-06-15 09:48:36",135,"Starting command sequence
 2021-06-15 10:05:26",491,"Completed command sequence
 
-FT2 (?)
+FT2 (from css), "recollect", in log, USE
 2021-06-15 10:27:32",703,"Starting command sequence
 2021-06-15 10:44:56",755,"Completed command sequence
 
-ET2 (?)
+ET2 (from css), in log, USE
 2021-06-15 14:12:39",299,"Starting command sequence
 2021-06-15 14:28:33",314,"Completed command sequence
 
+do the harvest
+hh=~/cris/tvac_j3/06-15_mn_s2_CO2
+cat Collection/2021/06_Jun/15/0100/20210615_01_{23..42}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/06_Jun/15/0300/20210615_03_{52..59}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/06_Jun/15/0400/20210615_04_{00..11}_??_???.dat >> $hh/FT1.dat
+cat Collection/2021/06_Jun/15/1000/20210615_10_{27..44}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/06_Jun/15/1400/20210615_14_{12..28}_??_???.dat >  $hh/ET2.dat
 
+LW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+ET1
+2021-06-21 18:01:45",906,"Starting command sequence
+2021-06-21 18:27:53",259,"Completed command sequence
 
+ET2
+2021-06-21 19:52:39",19,"Starting command sequence
+2021-06-21 20:09:47",61,"Completed command sequence
 
+FT2 
+2021-06-21 20:56:20",924,"Starting command sequence
+2021-06-21 21:14:15",467,"Completed command sequence
 
+FT1
+2021-06-21 23:18:51",259,"Starting command sequence
+2021-06-21 23:34:49",601,"Completed command sequence
 
+do the harvest
+hh=~/cris/tvac_j3/06-21_mn_s1_CO2
+cat Collection/2021/06_Jun/21/1800/20210621_18_{01..27}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/06_Jun/21/1900/20210621_19_{52..59}_??_???.dat >  $hh/ET2.dat
+cat Collection/2021/06_Jun/21/2000/20210621_20_{00..09}_??_???.dat >> $hh/ET2.dat
+cat Collection/2021/06_Jun/21/2000/20210621_20_{56..59}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/06_Jun/21/2100/20210621_21_{00..14}_??_???.dat >> $hh/FT2.dat
+cat Collection/2021/06_Jun/21/2300/20210621_23_{18..34}_??_???.dat >  $hh/FT1.dat
 
+MW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+ET1 (?)
+2021-06-22 02:14:43",333,"Starting command sequence
+2021-06-22 02:31:26",900,"Completed command sequence
 
+FT1
+2021-06-22 03:39:19",767,"Starting command sequence
+2021-06-22 03:55:03",756,"Completed command sequence
 
+FT2
+2021-06-22 05:42:10",770,"Starting command sequence
+2021-06-22 05:57:37",877,"Completed command sequence
+
+ET2
+2021-06-22 07:57:12",415,"Starting command sequence
+2021-06-22 08:14:14",77,"Completed command sequence
+
+do the harvest
+hh=~/cris/tvac_j3/06-22_mn_s1_CH4
+cat Collection/2021/06_Jun/22/0200/20210622_02_{14..31}_??_???.dat >  $hh/ET1.dat
+cat Collection/2021/06_Jun/22/0300/20210622_03_{39..55}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/06_Jun/22/0500/20210622_05_{42..57}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/06_Jun/22/0700/20210622_07_{57..59}_??_???.dat >  $hh/ET2.dat
+cat Collection/2021/06_Jun/22/0800/20210622_08_{00..14}_??_???.dat >> $hh/ET2.dat
+
+SW side 1 ILS_Spectral_Cal times from cmd files
+------------------------------------------------
+ET2
+2021-06-22 08:28:39",973,"Starting command sequence
+2021-06-22 08:45:44",785,"Completed command sequence
+
+FT2
+2021-06-22 09:06:10",296,"Starting command sequence
+2021-06-22 09:21:52",964,"Completed command sequence
+
+FT1
+2021-06-22 11:11:12",342,"Starting command sequence
+2021-06-22 11:31:03",770,"Completed command sequence
+
+ET1
+2021-06-22 14:06:01",491,"Starting command sequence
+2021-06-22 14:33:17",605,"Completed command sequence
+
+do the harvest
+hh=~/cris/tvac_j3/06-22_mn_s1_CO
+cat Collection/2021/06_Jun/22/0800/20210622_08_{28..45}_??_???.dat >  $hh/ET2.dat
+cat Collection/2021/06_Jun/22/0900/20210622_09_{06..21}_??_???.dat >  $hh/FT2.dat
+cat Collection/2021/06_Jun/22/1100/20210622_11_{11..31}_??_???.dat >  $hh/FT1.dat
+cat Collection/2021/06_Jun/22/1400/20210622_14_{06..33}_??_???.dat >  $hh/ET1.dat
 
