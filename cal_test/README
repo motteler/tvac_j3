@@ -1,0 +1,6 @@
+
+Test directory for transmittances from calibrated radiances.  The
+data here is from 06-01_pfh_s1_CO, which had a substantial ripple.
+Most of the functions developed here--check_leg, cal_run, cal_fit,
+cal_tran, and cal_rad--have been moved to the source directory.
+

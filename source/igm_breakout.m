@@ -3,7 +3,7 @@
 %   igm_breakout - break out ES, SP, and IT looks from a test leg
 %
 % SYNOPSIS
-%   [igm_es, time_es, igm_sp, time_sp, igm_it, time_it] = ...
+%   [igm_es, igm_sp, igm_it, time_es, time_sp, time_it] = ...
 %       igm_breakout(band, d1, sdir)
 %
 % INPUTS
@@ -20,8 +20,8 @@
 %   time_it  - IT times, IET
 %
 
-function [igm_es, time_es, igm_sp, time_sp, igm_it, time_it] = ...
-   igm_breakout(band, d1, sdir)
+function [igm_es, igm_sp, igm_it, time_es, time_sp, time_it] = ...
+             igm_breakout(band, d1, sdir)
 
 switch upper(band)
   case 'LW'

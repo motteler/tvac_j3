@@ -1,0 +1,29 @@
+
+ET2
+t1 (hh:mm:ss) > 8:37:30
+t2 (hh:mm:ss) > 8:39:36
+ET2 index = 754:1069
+
+FT2
+t1 (hh:mm:ss) > 09:13:30
+t2 (hh:mm:ss) > 09:15:36
+FT2 index = 25:340
+gas pres 50.817 Torr
+gas temp 17.05 C
+
+FT1
+t1 (hh:mm:ss) > 11:22:34
+t2 (hh:mm:ss) > 11:24:42
+FT1 index = 25:345
+gas pres 50.814 Torr
+gas temp 17.05 C
+
+ET1
+t1 (hh:mm:ss) > 14:25:06
+t2 (hh:mm:ss) > 14:27:14
+ET1 index = 25:345
+
+summary
+gas pres 50.80 Torr
+gas temp 17.05 C
+

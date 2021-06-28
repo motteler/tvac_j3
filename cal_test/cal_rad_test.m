@@ -24,7 +24,8 @@ tleg = upper(input('test leg (e.g., FT2) > ', 's'));
 mfile = fullfile('./', tleg);
 load(mfile);
 
-% take ES subsets.  NOTE: limits here are from spec_test 1
+% take ES subsets.
+% values are for the 06-01_pfh_s1_CO test
 switch tleg
   case 'ET2', eset = 20:345;
   case 'ET1', eset = 554:871;
@@ -46,65 +47,20 @@ fprintf(1, 'eng neon=%.5f assigned neon=%.5f, wlaser=%.5f\n', ...
 
 [robs, vobs] = cal_rad(band, wlaser, d1, eset, opt1);
 
-bobs = rad2bt(vobs, real(robs));
-
-return
+bobs = real(rad2bt(vobs, abs(robs)));
 
 figure(1)
 set(gcf, 'DefaultAxesColorOrder', fovcolors);
-plot(inst.freq, real(bobs(:,:)),'linewidth',2)
+plot(vobs, bobs(:,:),'linewidth',2)
 title(sprintf('test leg %s, calibrated radiances as BT', tleg))
-legend(fovnames,  'location', 'best')
+switch tleg
+  case 'ET1', ylim([325, 329]),
+  case 'ET2', ylim([312, 318])
+end
+legend(fovnames,  'location', 'south')
 xlabel('wavenumber')
 ylabel('BT')
 grid on; zoom on
 % saveas(gcf, sprintf('%s_cal_rad_all_FOVs', tleg), 'fig')
 
-% save(sprintf('cal_%s', tleg), 'robs', 'inst', 'tleg')
-
-return
-
-% show all ES FOVs at one frequency
-figure(2); clf
-set(gcf, 'DefaultAxesColorOrder', fovcolors);
-ifrq = floor(inst.npts/2);
-vseq = squeeze(abs(spec_es(ifrq, :, :)));
-[m, nobs] = size(vseq);
-plot(dtime_es, vseq, '.')
-% xlim([t1, t2])
-title(sprintf('test leg %s, ES, all FOVs at %.2f cm-1', tleg, inst.freq(ifrq)))
-legend(fovnames,  'location', 'best')
-xlabel('hour')
-ylabel('count')
-grid on; zoom on
-% saveas(gcf, sprintf('%s_ES_all_FOVs', tleg), 'fig')
-
-
-% show all SP FOVs at one frequency
-figure(3); clf
-set(gcf, 'DefaultAxesColorOrder', fovcolors);
-vseq = squeeze(abs(spec_sp(ifrq, :, :)));
-[m, nobs] = size(vseq);
-plot(dtime_sp, vseq, '.')
-% xlim([t1, t2])
-title(sprintf('test leg %s, SP, all FOVs at %.2f cm-1', tleg, inst.freq(ifrq)))
-legend(fovnames,  'location', 'south')
-xlabel('hour')
-ylabel('count')
-grid on; zoom on
-% saveas(gcf, sprintf('%s_SP_all_FOVs', tleg), 'fig')
-            
-% show all IT FOVs at one frequency
-figure(4); clf
-set(gcf, 'DefaultAxesColorOrder', fovcolors);
-vseq = squeeze(abs(spec_it(ifrq, :, :)));
-[m, nobs] = size(vseq);
-plot(dtime_it, vseq, '.')
-% xlim([t1, t2])
-title(sprintf('test leg %s, IT, all FOVs at %.2f cm-1', tleg, inst.freq(ifrq)))
-legend(fovnames,  'location', 'south')
-xlabel('hour')
-ylabel('count')
-grid on; zoom on
-% saveas(gcf, sprintf('%s_IT_all_FOVs', tleg), 'fig')
 

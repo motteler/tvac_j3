@@ -9,7 +9,7 @@
 %   ifrq    - frequency index for figure 2
 %   ifov    - choose a FOV for figure 3
 %
-% derived from spec_test1
+% derived from spec_test1 and plot_legs
 %
 
 % paths and libs
@@ -46,8 +46,8 @@ fprintf(1, 'eng neon=%.5f assigned neon=%.5f, wlaser=%.5f\n', ...
   d1.packet.NeonCal.NeonGasWavelength, opt2.neonWL, wlaser);
 
 % break out the igm data
-[igm_es, time_es, igm_sp, time_sp, igm_it, time_it] = ...
-   igm_breakout(band, d1, sdir);
+[igm_es, igm_sp, igm_it, time_es, time_sp, time_it] = ...
+         igm_breakout(band, d1, sdir);
 
 % translate to count spectra
 spec_es = igm2spec(igm_es, inst);
@@ -90,7 +90,7 @@ grid on; zoom on
 ind_file = sprintf('%s_ind.mat', tleg);
 if exist(ind_file) == 2 
 
-  % use exsiting time spans
+  % use existing time spans
   d3 = load(ind_file);
   t1 = d3.t1;
   t2 = d3.t2;
