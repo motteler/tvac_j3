@@ -4,7 +4,7 @@ steps to produce transmittances from calibrated radiances
   1. harvest data as before
   2. run read_ccs on the test days
   3. run check_leg on each test leg, get ES subsets
-  4. edit and run spec_test2 for an overview of obs and cal
+  4. edit and run check_trans for an overview of obs and cal
   5. edit and run cal_run to get transmittances
 
 main functions
@@ -14,6 +14,9 @@ main functions
   cal_tran - transmittance from calibrated radiances
   cal_rad  - calibrated radiances from TVAC packet stream
   igm_breakout - break out ES, SP, and IT looks from a test leg
+  check_trans - compare calc with obs from calibrated radiances
+  check_leg   - quick look at a test leg
+
 
 calling sequences
 
@@ -21,4 +24,12 @@ calling sequences
   cal_fit calls kc2inst and cal_tran
   cal_tran calls cal_rad
   cal_rad calls igm_breakout
+
+correspondences
+     old          new
+  spec_test1 -> check_leg
+  spec_test2 -> check_trans
+  fit_run    -> cal_run
+  cal_fit    -> fit_tran and cmp_tran
+  (cal_tran, cal_rad are new)
 

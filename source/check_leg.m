@@ -1,5 +1,5 @@
 %
-% check_leg -- quick look at a test leg
+% check_leg -- check a test leg
 %
 % main test parameters
 %   band    - 'LW', 'MW', or 'SW'

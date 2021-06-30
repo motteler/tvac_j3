@@ -1,5 +1,5 @@
 %
-% cal_tran_test
+% check_trans - compare calc with obs from calibrated radiances
 %
 % main test parameters
 %   band     - 'LW', 'MW', or 'SW'
@@ -8,6 +8,8 @@
 %   afile    - tabulated absorptions, at 0.0025 cm-1 grid
 %   abswt    - scale factor for tabulated absorptions
 %   sdir     - sweep direction, 0 or 1
+%
+% edit as needed
 %
 
 % paths and libs
@@ -40,10 +42,10 @@ opts.inst_res = 'hires4';
 % specify the ES subsets
 % values are for the 06-01_pfh_s1_CO test
 igm  = struct;
-igm.et1_ix = 554:871;
-igm.et2_ix = 20:345;
-igm.ft1_ix = 20:345;
-igm.ft2_ix = 20:255;
+igm.et1_ix = 25:345;
+igm.et2_ix = 754:1069;
+igm.ft1_ix = 25:345;
+igm.ft2_ix = 25:340;
 
 % load the test legs
 load('ET1'); igm.et1 = d1;
@@ -81,7 +83,7 @@ grid; zoom on
 xlabel('wavenumber')
 ylabel('transmittance')
 grid on; zoom on
-% saveas(gcf, 'cal_test2_all', 'fig')
+saveas(gcf, 'check_trans_all', 'fig')
 
 figure(2); clf
 plot(freq2, tobs2, freq2, tcal2, 'k-.');
@@ -92,5 +94,5 @@ grid; zoom on
 xlabel('wavenumber')
 ylabel('transmittance')
 grid on; zoom on
-% saveas(gcf, 'cal_test2_zoom', 'fig')
+% saveas(gcf, 'check_trans_zoom', 'fig')
 
